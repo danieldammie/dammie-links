@@ -12,7 +12,7 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             margin: 0;
             padding: 0;
-            background: linear-gradient(135deg, #8B7355 0%, #6B5B47 50%, #4A3F35 100%);
+            background: linear-gradient(135deg, #5B6B3B 0%, #4A5A2E 50%, #3A4A21 100%);
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -27,13 +27,13 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: radial-gradient(circle at 20% 80%, rgba(139, 115, 85, 0.3) 0%, transparent 50%),
-                        radial-gradient(circle at 80% 20%, rgba(107, 91, 71, 0.3) 0%, transparent 50%);
+            background: radial-gradient(circle at 20% 80%, rgba(91, 107, 59, 0.3) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(74, 90, 46, 0.3) 0%, transparent 50%);
             pointer-events: none;
         }
         .container { 
             max-width: 420px;
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(249, 247, 241, 0.95);
             backdrop-filter: blur(20px);
             padding: 50px 40px;
             border-radius: 24px;
@@ -41,12 +41,12 @@
             text-align: center;
             position: relative;
             z-index: 1;
-            border: 1px solid rgba(139, 115, 85, 0.1);
+            border: 1px solid rgba(91, 107, 59, 0.1);
         }
         .logo {
             font-size: 42px;
             font-weight: 800;
-            background: linear-gradient(135deg, #8B7355 0%, #6B5B47 100%);
+            background: linear-gradient(135deg, #5B6B3B 0%, #4A5A2E 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -54,7 +54,7 @@
             letter-spacing: -1px;
         }
         .tagline {
-            color: #8B7355;
+            color: #5B6B3B;
             font-size: 13px;
             font-weight: 500;
             text-transform: lowercase;
@@ -84,7 +84,7 @@
         }
         .event-badge {
             display: inline-block;
-            background: linear-gradient(135deg, #8B7355 0%, #6B5B47 100%);
+            background: linear-gradient(135deg, #5B6B3B 0%, #4A5A2E 100%);
             color: white;
             padding: 6px 16px;
             border-radius: 20px;
@@ -119,7 +119,7 @@
             margin: 35px 0 25px 0;
         }
         .app-store-text {
-            color: #8B7355;
+            color: #5B6B3B;
             font-size: 14px;
             margin-bottom: 20px;
             font-weight: 500;
@@ -141,7 +141,7 @@
         .secondary-link {
             display: inline-block;
             margin-top: 25px;
-            color: #8B7355;
+            color: #5B6B3B;
             text-decoration: none;
             font-size: 14px;
             font-weight: 500;
@@ -149,31 +149,11 @@
             padding: 8px 16px;
             border-radius: 12px;
             transition: all 0.2s ease;
-            border: 1px solid rgba(139, 115, 85, 0.2);
+            border: 1px solid rgba(91, 107, 59, 0.2);
         }
         .secondary-link:hover {
-            background: rgba(139, 115, 85, 0.1);
+            background: rgba(91, 107, 59, 0.1);
             transform: translateY(-2px);
-        }
-        .boom-text {
-            position: absolute;
-            top: -15px;
-            right: -15px;
-            background: linear-gradient(135deg, #FF6B6B 0%, #FF8E53 100%);
-            color: white;
-            padding: 8px 12px;
-            border-radius: 16px;
-            font-size: 11px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
-            animation: pulse 2s infinite;
-            display: none;
-        }
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
         }
         .loading-dots {
             display: none;
@@ -184,7 +164,7 @@
             width: 8px;
             height: 8px;
             border-radius: 50%;
-            background: #8B7355;
+            background: #5B6B3B;
             margin: 0 3px;
             animation: loading 1.4s infinite ease-in-out both;
         }
@@ -198,8 +178,6 @@
 </head>
 <body>
     <div class="container">
-        <div class="boom-text" id="boomText">boom!</div>
-        
         <div class="logo">dammie</div>
         <div class="tagline">events that matter</div>
         
@@ -248,13 +226,12 @@
                     .replace(/-/g, ' ')
                     .replace(/\b\w/g, l => l.toUpperCase());
                 
-                // Update page for event - dammie style!
+                // Update page for event - authentic dammie style
                 document.getElementById('defaultTitle').style.display = 'none';
                 document.getElementById('eventTitle').style.display = 'block';
                 document.getElementById('eventBadge').style.display = 'inline-block';
-                document.getElementById('boomText').style.display = 'block';
                 document.getElementById('eventTitle').textContent = eventTitle;
-                document.getElementById('message').textContent = 'boom! this event looks amazing. get the dammie app to see full details, save to your favorites, and share with your circle.';
+                document.getElementById('message').textContent = 'this event looks amazing. get the dammie app to see full details, save to your favorites, and share with your circle.';
                 document.title = `dammie - ${eventTitle}`;
                 
                 // Show loading animation
