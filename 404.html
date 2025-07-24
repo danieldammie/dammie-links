@@ -16,12 +16,24 @@
             justify-content: center;
         }
         .container { 
-            max-width: 400px;
+            max-width: 500px;
             background: white;
             padding: 40px;
             border-radius: 20px;
             box-shadow: 0 20px 40px rgba(0,0,0,0.1);
             text-align: center;
+        }
+        .app-screenshots {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 30px 0;
+        }
+        .screenshot {
+            width: 120px;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
         }
         .logo {
             font-size: 32px;
@@ -80,10 +92,16 @@
         <div class="message" id="message">
             this subdomain handles universal links for the dammie app.
         </div>
+        
+        <div class="app-screenshots">
+            <img src="https://images.squarespace-cdn.com/content/684f55a648806d06ae9a9d91/75da6113-c09b-4410-afb6-e92f9460d0c8/home_light2.png?content-type=image/png" alt="dammie app home" class="screenshot">
+            <img src="https://images.squarespace-cdn.com/content/684f55a648806d06ae9a9d91/3a90b3c5-0591-46bd-9d14-e922297070e2/event_detail.png?content-type=image%2Fpng" alt="dammie app event detail" class="screenshot">
+        </div>
+        
         <a href="https://apps.apple.com/app/dammie/id6450453123" class="download-btn">
             download dammie
         </a>
-        <a href="https://dammie.app" class="secondary-link">
+        <a href="https://dammie.app/app" class="secondary-link">
             learn more about dammie
         </a>
     </div>
@@ -115,9 +133,9 @@
                     window.location.href = appURL;
                 }, 1000);
                 
-                // If app doesn't open, redirect to main dammie.app site
+                // If app doesn't open, redirect to dammie.app/app page
                 setTimeout(() => {
-                    window.location.href = 'https://dammie.app';
+                    window.location.href = 'https://dammie.app/app';
                 }, 3000);
             }
         }
