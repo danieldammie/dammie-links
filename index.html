@@ -3,33 +3,124 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>dammie links</title>
+    <title>dammie</title>
     <style>
         body { 
-            font-family: monospace; 
-            text-align: center; 
-            padding: 50px; 
-            background: #f5f5f5; 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         .container { 
-            max-width: 600px; 
-            margin: 0 auto; 
-            background: white; 
-            padding: 40px; 
-            border-radius: 8px; 
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1); 
+            max-width: 400px;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            text-align: center;
         }
-        h1 { color: #333; margin-bottom: 20px; }
-        p { color: #666; line-height: 1.6; }
-        .link { color: #007AFF; text-decoration: none; }
-        .link:hover { text-decoration: underline; }
+        .logo {
+            font-size: 32px;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 20px;
+        }
+        .event-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 15px;
+            line-height: 1.4;
+            display: none;
+        }
+        .default-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        .message {
+            color: #666;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        .download-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: transform 0.2s ease;
+        }
+        .download-btn:hover {
+            transform: translateY(-2px);
+        }
+        .secondary-link {
+            display: block;
+            margin-top: 20px;
+            color: #667eea;
+            text-decoration: none;
+            font-size: 14px;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>dammie universal links</h1>
-        <p>this subdomain handles universal links for the dammie app.</p>
-        <p>visit <a href="https://dammie.app" class="link">dammie.app</a> for the main site.</p>
+        <div class="logo">dammie</div>
+        <div class="default-title" id="defaultTitle">universal links</div>
+        <div class="event-title" id="eventTitle"></div>
+        <div class="message" id="message">
+            this subdomain handles universal links for the dammie app.
+        </div>
+        <a href="https://apps.apple.com/app/dammie/id6450453123" class="download-btn">
+            download dammie
+        </a>
+        <a href="https://dammie.app" class="secondary-link">
+            learn more about dammie
+        </a>
     </div>
+
+    <script>
+        // Check if this is an event URL
+        const path = window.location.pathname;
+        
+        if (path.startsWith('/event/')) {
+            // Extract event slug
+            const eventSlug = path.replace('/event/', '');
+            
+            if (eventSlug && eventSlug !== '') {
+                // Convert slug back to readable title
+                const eventTitle = eventSlug
+                    .replace(/-/g, ' ')
+                    .replace(/\b\w/g, l => l.toUpperCase());
+                
+                // Update page for event
+                document.getElementById('defaultTitle').style.display = 'none';
+                document.getElementById('eventTitle').style.display = 'block';
+                document.getElementById('eventTitle').textContent = eventTitle;
+                document.getElementById('message').textContent = 'get the dammie app to see full event details, save events, and connect with your circle.';
+                document.title = `dammie - ${eventTitle}`;
+                
+                // Try to open in app first, then redirect to main site
+                setTimeout(() => {
+                    const appURL = `dammie://event/${eventSlug}`;
+                    window.location.href = appURL;
+                }, 1000);
+                
+                // If app doesn't open, redirect to main dammie.app site
+                setTimeout(() => {
+                    window.location.href = 'https://dammie.app';
+                }, 3000);
+            }
+        }
+    </script>
 </body>
 </html> 
